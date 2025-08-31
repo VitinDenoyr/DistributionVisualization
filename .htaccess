@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Se a URL solicitada for GET de um arquivo existente
+    RewriteCond %{REQUEST_METHOD} !POST
+    RewriteCond %{REQUEST_FILENAME} -f
+    
+    # Redirecionar para uma página de erro 403 Forbidden, exceto js e css
+    RewriteCond %{REQUEST_URI} !\.(css|js|png|ico|json)$
+    RewriteRule ^ - [F]
+
+    # Se a URL solicitada não for um arquivo existente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    
+    # Se a URL solicitada não for um diretório existente
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Redirecionar apenas para as rotas desejadas
+    RewriteRule ^$ main.php [L,QSA]
+    RewriteRule ^nome$ main.php [L,QSA]
+    RewriteRule ^ranking$ main.php [L,QSA]
+    RewriteRule ^custom$ main.php [L,QSA]
+    RewriteRule ^nome/medalhista$ main.php [L,QSA]
+</IfModule>
+
+php_flag log_errors on
+php_value error_log /home/u509229357/public_html/error_log.txt

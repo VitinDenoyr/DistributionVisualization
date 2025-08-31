@@ -1,0 +1,399 @@
+/* DEFAULT */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+	--multiplicator: 1;
+	--header-c: #fcb103;
+	--background-c: #f2f1d0;
+	--title-c: #FFFFFF;
+	--footertxt-c: #FFFFFF;
+	--hlist-c: #f7bc31;
+	--hlisthover-c: #f7c54f;
+	--text-c: #333;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+    margin: 0;
+	margin-top: calc(80px*var(--multiplicator));
+	background-color: var(--background-c);
+	min-height: 100vh;
+}
+
+#content {
+    margin-left: calc(30px*var(--multiplicator));
+	margin-right: calc(30px*var(--multiplicator));
+}
+
+div, p {
+	transition: opacity 0.5s ease-in-out;
+}
+
+/* CONTENT */
+.distribution-container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: left;
+}
+
+.distribution-title {
+	font-family: 'Nova Square', sans-serif;
+	font-size: 2.5em;
+	text-align: center;
+	color: var(--text-c);
+	margin-bottom: 20px;
+}
+
+.distribution-text {
+	font-family: 'Nova Square', sans-serif;
+	color: var(--text-c);
+}
+
+.distribution-description {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.1em;
+	line-height: 1.7;
+	text-align: justify;
+	margin-bottom: 30px;
+}
+
+.main-content-area {
+	display: flex;
+	gap: 30px;
+	align-items: flex-start;
+}
+
+.graph-wrapper {
+    flex: 1.8;
+    min-width: 0;
+}
+
+.graph-container {
+    width: 100%;
+    height: max(24vw,24vh);
+    position: relative;
+    background-color: #f4f4f4;
+    border: calc(1px*var(--multiplicator)) solid #ccc;
+    border-radius: calc(8px*var(--multiplicator));
+    box-shadow: 0 calc(4px*var(--multiplicator)) calc(8px*var(--multiplicator)) rgba(0,0,0,0.1);
+}
+
+.controls-container {
+    display: flex;
+	flex: 1.2;
+    min-width: 0;
+	flex-direction: column;
+	gap: 1vh;
+	padding: calc(20px * var(--multiplicator));
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 8px;
+	border: 1px solid #ddd;
+	margin: 0;
+}
+
+.control-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1vh;
+}
+
+.label-and-slider {
+    display: flex;
+    width: 90%;
+    flex-direction: column;
+}
+
+.control-item label {
+	font-weight: 700;
+	flex-shrink: 0;
+}
+
+.composite-input {
+	display: flex;
+	flex-grow: 1;
+	align-items: center;
+    min-width: 220px;
+	gap: calc(15px * var(--multiplicator));
+}
+
+.composite-input input[type="number"] {
+	width: calc(100px * var(--multiplicator));
+	padding: calc(10px * var(--multiplicator));
+	font-size: calc(16px * var(--multiplicator));
+	font-family: 'Montserrat', sans-serif;
+	color: var(--text-c);
+	background-color: #fff;
+	border: 2px solid #ccc;
+	border-radius: 6px;
+	outline: none;
+	transition: border-color 0.3s ease, box-shadow 0.3s ease;
+	text-align: center;
+}
+
+.composite-input input[type="number"]:focus {
+	border-color: var(--header-c);
+	box-shadow: 0 0 8px rgba(252, 177, 3, 0.4);
+}
+
+.composite-input input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+	flex-grow: 1;
+	height: calc(8px * var(--multiplicator));
+	background: #ddd;
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+}
+
+.composite-input input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: calc(20px * var(--multiplicator));
+	height: calc(20px * var(--multiplicator));
+	background: var(--hlist-c);
+	border-radius: 50%;
+	border: 2px solid white;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+.composite-input input[type=range]::-moz-range-thumb {
+	width: calc(20px * var(--multiplicator));
+	height: calc(20px * var(--multiplicator));
+	background: var(--hlist-c);
+	border-radius: 50%;
+	border: 2px solid white;
+	box-shadow: 0 0 5px rgba(0,0,0,0.3);
+	cursor: pointer;
+}
+
+/* HEADER */
+#header {
+	display: flex;
+	width: auto;
+	height: calc(80px*var(--multiplicator));
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: var(--header-c);
+	box-shadow: 0 0 calc(10px * var(--multiplicator)) 0 #010101;
+	align-items: center;
+	position: fixed;
+	padding: 0 calc(16px * var(--multiplicator));
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+}
+
+#logo {
+	display: block;
+	width: calc(48px*var(--multiplicator));
+	height: calc(64px*var(--multiplicator));;
+	margin: 0 auto;
+	cursor: pointer;
+	transition: all 0.5s ease;
+}
+
+#logo:hover {
+	transform: scale(1.1);
+}
+
+#pageTitle {
+	color: var(--title-c);
+	font-size: calc(32px*var(--multiplicator));
+	font-family: 'Nova Square';
+	cursor: text;
+	transition: all 0.5s ease;
+	height: auto;
+}
+
+#pageTitle:hover {
+	transform: scale(1.05);
+}
+
+#logicMenu {
+	display: none;
+}
+
+#labelMenu {
+	display: flex;
+	width: calc(48px*var(--multiplicator));
+	height: calc(32px*var(--multiplicator));
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+	transition: all 0.4s ease;
+}
+
+#line1, #line3 {
+	transition: all 0.5s ease;
+}
+
+#line2 {
+	transition: all 0.25s ease;
+}
+
+#labelMenu:hover {
+	transform: scale(1.1);
+}
+
+#menuList {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	text-align: center;
+	background-color: var(--header-c);
+	color: var(--title-c);
+	position: fixed;
+	padding: 0;
+	margin: 0;
+	top: calc(70px*var(--multiplicator));
+	left: 0;
+	right: 0;
+	z-index: 99;
+	list-style-type: none;
+	transition: all 0.4s ease;
+}
+
+#menuList:hover {
+	background-color: var(--hlisthover-c);
+}
+
+.menuElement {
+	display: flex;
+	visibility: hidden;
+	opacity: 0;
+	width: 100%;
+	height: 0;
+	cursor: pointer;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.4s ease;
+}
+
+.menuButton {
+	cursor: pointer;
+	visibility: hidden;
+	opacity: 0;
+	font-size: calc(24px*var(--multiplicator));
+	font-family: 'Prompt';
+	color: var(--title-c);
+	border: none;
+	background: transparent;
+	width: 100%;
+	height: 0;
+	transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.menuButton:hover {
+	background-color: var(--hlisthover-c);
+}
+
+#logicMenu:checked + #labelMenu #line1{
+	transform: rotate(45deg) translateY(calc(10px * var(--multiplicator))) scaleX(1.16) translateX(calc(8px * var(--multiplicator)));
+}
+
+#logicMenu:checked + #labelMenu #line2{
+	opacity: 0;
+}
+
+#logicMenu:checked + #labelMenu #line3{
+	transform: rotate(-45deg) translateY(calc(-10px * var(--multiplicator))) scaleX(1.16) translateX(calc(8px * var(--multiplicator)));
+}
+
+#logicMenu:checked ~ #menuList {
+	background-color: var(--hlist-c);
+	top: calc(80px*var(--multiplicator));
+}
+
+#logicMenu:checked ~ #menuList .menuElement {
+	opacity: 100;
+	visibility: visible;
+	height: calc(50px * var(--multiplicator));
+}
+
+#logicMenu:checked ~ #menuList .menuButton {
+	opacity: 100;
+	visibility: visible;
+	height: calc(50px * var(--multiplicator));
+}
+
+#logicMenu:checked ~ #menuList .menuButton:not(:last-child) {
+	border-bottom: calc(1px * var(--multiplicator)) solid #555;
+}
+
+.visualMenu {
+	display: block;
+	width: calc(40px * var(--multiplicator));
+	height: 0px;
+	background-color: var(--title-c);
+	border: calc(3px * var(--multiplicator)) #ffffff solid;
+	border-radius: calc(3px * var(--multiplicator));
+}
+
+/* FOOTER */
+#footer {
+	display: flex;
+	width: auto;
+	height: calc(80px*var(--multiplicator));
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: var(--header-c);
+	box-shadow: 0 0 calc(5px * var(--multiplicator)) 0 #010101;
+	align-items: center;
+	padding: 0 calc(24px * var(--multiplicator));
+	margin-top: auto;
+	z-index: 98;
+}
+
+.footerText {
+	color: var(--footertxt-c);
+	font-size: calc(14px * var(--multiplicator));
+	font-family: 'Prompt';
+	font-weight: 200;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 900px) {
+    .main-content-area {
+        flex-direction: column;
+    }
+    .graph-wrapper {
+        width: 100%;
+    }
+    
+    .controls-container {
+        width: 100%;
+    }
+}
+
+@media (min-width: 0px) and (max-width: 450px) {
+	:root {
+	--multiplicator: 0.6;
+	}
+	.footerText {
+	font-size: calc(11px * var(--multiplicator));
+	}
+}
+
+@media (min-width: 450px) and (max-width: 1000px) {
+	:root {
+	--multiplicator: 1;
+	}
+	.footerText {
+	font-size: calc(13px * var(--multiplicator));
+	}
+}
+
+@media (min-width: 1000px) {
+	:root {
+	--multiplicator: 1.2;
+	}
+}
